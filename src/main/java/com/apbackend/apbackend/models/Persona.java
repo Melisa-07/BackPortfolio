@@ -1,8 +1,6 @@
 package com.apbackend.apbackend.models;
 
 
-import org.hibernate.query.criteria.internal.expression.function.LengthFunction;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -10,7 +8,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Usuario implements Serializable {
+public class Persona implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,11 +30,11 @@ public class Usuario implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy ="idExp")
     private List<Experiencia> experienciaList;
 
-    public Usuario() {
+    public Persona() {
 
     }
 
-    public Usuario(Long id, String nombre, String apellido, String titulo, String descripcion, String fotoPerfil, List<Educacion> educacionList, List<Skills> skillList, List<Experiencia> experienciaList) {
+    public Persona(Long id, String nombre, String apellido, String titulo, String descripcion, String fotoPerfil, List<Educacion> educacionList, List<Skills> skillList, List<Experiencia> experienciaList) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
