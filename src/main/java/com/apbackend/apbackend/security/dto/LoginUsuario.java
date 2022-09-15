@@ -1,6 +1,9 @@
 package com.apbackend.apbackend.security.dto;
 
+
+
 import javax.validation.constraints.NotBlank;
+
 
 public class LoginUsuario {
     @NotBlank

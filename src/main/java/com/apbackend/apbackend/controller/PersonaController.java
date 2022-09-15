@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 
+
 @RestController
 @RequestMapping("/persona")
 public class PersonaController {
@@ -32,4 +33,5 @@ public class PersonaController {
         Persona updatePersona = personaService.editarPersona(persona);
         return new ResponseEntity<>(updatePersona, HttpStatus.OK);
     }
+
 }

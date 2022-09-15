@@ -15,9 +15,6 @@ public class ApbackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApbackendApplication.class, args);
 	}
-
-
-
 	@Bean
 	public CorsFilter corsFilter() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();

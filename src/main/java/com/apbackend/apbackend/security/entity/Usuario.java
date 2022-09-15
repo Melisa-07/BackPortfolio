@@ -1,10 +1,11 @@
 package com.apbackend.apbackend.security.entity;
 
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
 
 @Entity
 public class Usuario {
@@ -21,16 +22,15 @@ public class Usuario {
     @NotNull
     private String password;
     @NotNull
-    @ManyToMany
-    @JoinTable(name ="usuario_rol", joinColumns = @JoinColumn (name = "usuario_id"),
-            inverseJoinColumns = @JoinColumn(name ="rol_id"))
-    private Set<Rol> roles= new HashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "rol_id"))
+    private Set<Rol> roles = new HashSet<>();
 
     public Usuario() {
     }
 
-
-    public Usuario(String nombre, String nombreUsuario, String email, String password) {
+    public Usuario(@NotNull String nombre, @NotNull String nombreUsuario, @NotNull String email, @NotNull String password) {
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
         this.email = email;

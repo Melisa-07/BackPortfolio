@@ -1,8 +1,7 @@
 package com.apbackend.apbackend.security.entity;
 
 import com.apbackend.apbackend.security.enums.RolNombre;
-import com.sun.istack.NotNull;
-
+import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +16,7 @@ public class Rol {
     public Rol() {
     }
 
-    public Rol(RolNombre rolNombre) {
+    public Rol(@NotNull RolNombre rolNombre) {
         this.rolNombre = rolNombre;
     }
 
