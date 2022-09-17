@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/educacion")
+@RequestMapping("educacion")
 @CrossOrigin(origins = "https://portfolio-alfonsomelisa.web.app")
 public class EducacionController {
 
@@ -20,25 +20,25 @@ public class EducacionController {
         this.educacionService = educacionService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("all")
     public ResponseEntity<List<Educacion>> obtenerEducacion(){
         List<Educacion> educacion=educacionService.buscarEducacion();
         return new ResponseEntity<>(educacion, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<Educacion> obtenerEducacion(@PathVariable("id") Long id){
         Optional<Educacion> educacion=educacionService.buscarEducacionPorId(id);
         return new ResponseEntity<>(educacion.get(), HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping("update")
     public ResponseEntity<Educacion> editarEducacion(@RequestBody Educacion educacion){
         Educacion updateEducacion=educacionService.editarEducacion(educacion);
         return new ResponseEntity<>(updateEducacion, HttpStatus.OK);
     }
 
-    @PostMapping("/add")
+    @PostMapping("add")
     public ResponseEntity<Educacion> crearEducacion(@RequestBody Educacion educacion){
         Educacion nuevaEducacion=educacionService.addEducacion(educacion);
         return new ResponseEntity<>(nuevaEducacion, HttpStatus.OK);
