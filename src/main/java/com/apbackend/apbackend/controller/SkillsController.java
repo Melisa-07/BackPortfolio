@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("skills")
+@RequestMapping("/skills")
 @CrossOrigin(origins = "https://portfolio-alfonsomelisa.web.app")
 public class SkillsController {
     private final SkillsService skillsService;
@@ -20,25 +20,25 @@ public class SkillsController {
         this.skillsService = skillsService;
     }
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public ResponseEntity<List<Skills>> obtenerSkills(){
         List<Skills> skills=skillsService.buscarSkills();
         return new ResponseEntity<>(skills, HttpStatus.OK);
     }
 
-    @PutMapping("update")
+    @PutMapping("/update")
     public ResponseEntity<Skills> editarSkills(@RequestBody Skills skills){
         Skills updateSkills=skillsService.editarSkills(skills);
         return new ResponseEntity<>(updateSkills, HttpStatus.OK);
     }
 
-    @PostMapping("add")
+    @PostMapping("/add")
     public ResponseEntity<Skills> crearSkills(@RequestBody Skills skills){
         Skills nuevaSkills=skillsService.addSkills(skills);
         return new ResponseEntity<>(nuevaSkills, HttpStatus.OK);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> borrarSkills(@PathVariable("id")Long id){
         skillsService.borrarSkills(id);
         return new ResponseEntity<>(HttpStatus.OK);

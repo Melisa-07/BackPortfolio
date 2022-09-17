@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("persona")
+@RequestMapping("/persona")
 @CrossOrigin(origins = "https://portfolio-alfonsomelisa.web.app")
 public class PersonaController {
     private final PersonaService personaService;
@@ -23,13 +23,13 @@ public class PersonaController {
         this.personaService = personaService;
     }
 
-      @GetMapping("id/{id}")
+      @GetMapping("/id/{id}")
       public ResponseEntity<Persona> obtenerPersona(@PathVariable("id") Long id){
       Persona persona = personaService.buscarPersonaPorId(id);
       return new ResponseEntity<>(persona, HttpStatus.OK);
     }
 
-        @PutMapping("update")
+        @PutMapping("/update")
         public ResponseEntity<Persona> editarPersona(@RequestBody Persona persona){
         Persona updatePersona = personaService.editarPersona(persona);
         return new ResponseEntity<>(updatePersona, HttpStatus.OK);

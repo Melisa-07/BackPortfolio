@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("experiencia")
+@RequestMapping("/experiencia")
 @CrossOrigin(origins = "https://portfolio-alfonsomelisa.web.app")
 public class ExperienciaController {
     private final ExperienciaService experienciaService;
@@ -20,25 +20,25 @@ public class ExperienciaController {
         this.experienciaService = experienciaService;
     }
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public ResponseEntity<List<Experiencia>> obtenerExperiencia(){
         List<Experiencia> experiencia=experienciaService.buscarExperiencia();
         return new ResponseEntity<>(experiencia, HttpStatus.OK);
     }
 
-    @PutMapping("update")
+    @PutMapping("/update")
     public ResponseEntity<Experiencia> editarExperiencia(@RequestBody Experiencia experiencia){
         Experiencia updateExperiencia=experienciaService.editarExperiencia(experiencia);
         return new ResponseEntity<>(updateExperiencia, HttpStatus.OK);
     }
 
-    @PostMapping("add")
+    @PostMapping("/add")
     public ResponseEntity<Experiencia> crearExperiencia(@RequestBody Experiencia experiencia){
         Experiencia nuevaExperiencia=experienciaService.addExperiencia(experiencia);
         return new ResponseEntity<>(nuevaExperiencia, HttpStatus.OK);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> borrarExperiencia(@PathVariable("id")Long id){
         experienciaService.borrarExperiencia(id);
         return new ResponseEntity<>(HttpStatus.OK);
